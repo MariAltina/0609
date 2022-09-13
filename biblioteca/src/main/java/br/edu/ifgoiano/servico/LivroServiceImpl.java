@@ -1,34 +1,21 @@
 package br.edu.ifgoiano.servico;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ifgoiano.entidade.Livro;
+import br.edu.ifgoiano.repository.LivroRepository;
 
 @Service
 public class LivroServiceImpl implements LivroService{
 	
-	static List <Livro> livros = new ArrayList<Livro>();
+	@Autowired
+	private LivroRepository livroRepository;
 	
-	public LivroServiceImpl(){
-		Livro livro1= new Livro();
-		livro1.setIsbn("8677");
-		livro1.setNome("Arquitetura Limpa");
-		livro1.setAutor("Robert Martin");
-		
-		livros.add (livro1);
-
-		Livro livro2= new Livro();
-		livro2.setIsbn("89789");
-		livro2.setNome("Emgenharia de Sorftware");
-		livro2.setAutor("Ian Sommerville");
-		
-		livros.add (livro2);
-}
 
 	public List<Livro> listarLivros(){
-		return livros;
+		return livroRepository.findAll();
 }
 }
