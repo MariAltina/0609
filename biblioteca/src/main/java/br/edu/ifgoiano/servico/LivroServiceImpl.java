@@ -18,4 +18,11 @@ public class LivroServiceImpl implements LivroService{
 	public List<Livro> listarLivros(){
 		return livroRepository.findAll();
 }
+
+
+	@Override
+	public void inserir(Livro livro) {
+		this.livroRepository.save(livro);
+		
+	}
 }
